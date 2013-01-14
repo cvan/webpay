@@ -9,7 +9,7 @@ from django.utils.importlib import import_module
 import mock
 from nose.tools import eq_
 
-from webpay.auth.utils import client, get_user
+from webpay.auth.utils import client
 from webpay.auth import views as auth_views
 
 
@@ -17,7 +17,7 @@ good_assertion = {u'status': u'okay',
                   u'audience': u'http://some.site',
                   u'expires': 1351707833170,
                   u'unverified-email': u'a+unverified@a.com',
-                  u'issuer': u'login.persona.org'}
+                  u'forceIssuer': u'native-persona.org'}
 
 
 class SessionTestCase(test.TestCase):

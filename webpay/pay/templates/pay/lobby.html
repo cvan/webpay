@@ -2,6 +2,7 @@
 
 {% block body_attrs -%}
   data-beginflow="true"
+  data-unverified-issuer="{{ settings.UNVERIFIED_ISSUER }}"
   data-verify-url="{{ url('auth.verify') }}"
 {%- endblock %}
 

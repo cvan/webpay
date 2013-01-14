@@ -18,8 +18,10 @@ $(function() {
         this.setAttribute('placeholder', '****');
     });
 
-    if ($('body').data('beginflow')) {
-        var verifyUrl = $('body').data('verify-url');
+    var body = $('body');
+
+    if (body.data('beginflow')) {
+        var verifyUrl = body.data('verify-url');
 
         navigator.id.watch({
           onlogin: function(assertion) {
@@ -57,7 +59,7 @@ $(function() {
 
     }
 
-    if ($('body').data('docomplete')) {
+    if (body.data('docomplete')) {
         callPaySuccess();
     }
 
@@ -66,7 +68,10 @@ $(function() {
         ev.preventDefault();
         $('.message').hide();
         $('#login-wait').fadeIn();
-        navigator.id.request();
+        navigator.id.request({
+            allowUnverified: true,
+            forceIssuer: body.data('unverified-issuer')
+        });
     });
 
     function callPaySuccess() {
